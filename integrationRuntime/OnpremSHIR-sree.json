@@ -1,0 +1,6 @@
+{
+	"name": "OnpremSHIR-sree",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"name": "Functionlibrary",
+	"properties": {
+		"type": "UDFLibrary",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"Genderudf(string) as integer = iif(i1=='Male',1,0)"
+			]
+		}
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"name": "DelimitedText20",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlssreesa_linkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "EmpDetails.csv",
+				"fileSystem": "inputdatac2"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "Employee Name",
+				"type": "String"
+			},
+			{
+				"name": "Salary LPA",
+				"type": "String"
+			},
+			{
+				"name": "Variable",
+				"type": "String"
+			},
+			{
+				"name": "Incentive",
+				"type": "String"
+			},
+			{
+				"name": "Appraisal Rate",
+				"type": "String"
+			},
+			{
+				"name": "Joining Date",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

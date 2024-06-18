@@ -1,0 +1,60 @@
+{
+	"name": "dataflowparameterization",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText20",
+						"type": "DatasetReference"
+					},
+					"name": "Empdetails"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText21",
+						"type": "DatasetReference"
+					},
+					"name": "Empbystate"
+				}
+			],
+			"transformations": [
+				{
+					"name": "filterbystate"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     StateName as string",
+				"}",
+				"source(output(",
+				"          State as string,",
+				"          {Employee Name} as string,",
+				"          {Salary LPA} as string,",
+				"          Variable as string,",
+				"          Incentive as string,",
+				"          {Appraisal Rate} as string,",
+				"          {Joining Date} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> Empdetails",
+				"Empdetails filter(State == $StateName,",
+				"     partitionBy('hash', 1)) ~> filterbystate",
+				"filterbystate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Empbystate'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> Empbystate"
+			]
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"name": "deletePipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "filesdeleteed",
+						"value": "all parquet files in input data directory got deleted"
+					}
+				],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "inputdatacontainerdataset",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedservice_adlsdemosa",
+							"type": "LinkedServiceReference"
+						},
+						"path": "inputdatacontainer2"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"wildcardFileName": "'.parquet'",
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-05-23T00:55:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

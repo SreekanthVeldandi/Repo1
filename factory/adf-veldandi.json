@@ -1,0 +1,9 @@
+{
+	"name": "adf-veldandi",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8f8494ab-7cbd-4c70-a9a4-884c7ce810e5",
+		"tenantId": "0cda2100-afd2-46d8-b62b-c5785810e868"
+	}
+}

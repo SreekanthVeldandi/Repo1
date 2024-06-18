@@ -1,0 +1,19 @@
+{
+	"name": "Dataflowpractise",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 30
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-06-14T14:43:42Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

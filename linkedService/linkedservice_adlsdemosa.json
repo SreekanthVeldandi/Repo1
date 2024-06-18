@@ -1,0 +1,12 @@
+{
+	"name": "linkedservice_adlsdemosa",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=adlsdemosa;EndpointSuffix=core.windows.net;",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDI0ODYyQ0M4LTc5NzAtNDI2RS1BREU0LUM2NDRGQkM1MUU4Ml8yMDc4ZjlmYi1jMzliLTQ4MDYtYjhmNy0zMjlhMDU4Y2JjNzYiDQp9"
+		}
+	}
+}
