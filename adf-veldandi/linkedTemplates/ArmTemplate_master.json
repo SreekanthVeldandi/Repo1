@@ -1,0 +1,200 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-veldandi"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"adlssreesa_linkedservice_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'adlssreesa_linkedservice'"
+		},
+		"linkedservice_adlsdemosa_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linkedservice_adlsdemosa'"
+		},
+		"onpremsqlserver_ls_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'onpremsqlserver_ls'"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "@{linkedService().serverName}"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().dbName}"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "@{linkedService().userName}"
+		},
+		"adlssreesa_linkedservice_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssreesa.dfs.core.windows.net/"
+		},
+		"onpremsqlserver_ls_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azuresqlserversree.database.windows.net"
+		},
+		"onpremsqlserver_ls_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Azuresqldb"
+		},
+		"onpremsqlserver_ls_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "azuresqlserveradmin"
+		},
+		"trigger1_properties_pipeline2_parameters_dbNamefrompipeline": {
+			"type": "string",
+			"defaultValue": "test"
+		},
+		"trigger1_properties_pipeline2_parameters_sourcetableNamefrompipeliine": {
+			"type": "string",
+			"defaultValue": "t1"
+		},
+		"trigger1_properties_pipeline2_parameters_desttablenamefrompipeline": {
+			"type": "string",
+			"defaultValue": "t2"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-veldandi_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"adlssreesa_linkedservice_accountKey": {
+						"value": "[parameters('adlssreesa_linkedservice_accountKey')]"
+					},
+					"linkedservice_adlsdemosa_connectionString": {
+						"value": "[parameters('linkedservice_adlsdemosa_connectionString')]"
+					},
+					"onpremsqlserver_ls_password": {
+						"value": "[parameters('onpremsqlserver_ls_password')]"
+					},
+					"SqlServer1_properties_typeProperties_server": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"
+					},
+					"SqlServer1_properties_typeProperties_database": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_database')]"
+					},
+					"SqlServer1_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
+					},
+					"adlssreesa_linkedservice_properties_typeProperties_url": {
+						"value": "[parameters('adlssreesa_linkedservice_properties_typeProperties_url')]"
+					},
+					"onpremsqlserver_ls_properties_typeProperties_server": {
+						"value": "[parameters('onpremsqlserver_ls_properties_typeProperties_server')]"
+					},
+					"onpremsqlserver_ls_properties_typeProperties_database": {
+						"value": "[parameters('onpremsqlserver_ls_properties_typeProperties_database')]"
+					},
+					"onpremsqlserver_ls_properties_typeProperties_userName": {
+						"value": "[parameters('onpremsqlserver_ls_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adf-veldandi_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-veldandi_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adf-veldandi_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-veldandi_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "adf-veldandi_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"trigger1_properties_pipeline2_parameters_dbNamefrompipeline": {
+						"value": "[parameters('trigger1_properties_pipeline2_parameters_dbNamefrompipeline')]"
+					},
+					"trigger1_properties_pipeline2_parameters_sourcetableNamefrompipeliine": {
+						"value": "[parameters('trigger1_properties_pipeline2_parameters_sourcetableNamefrompipeliine')]"
+					},
+					"trigger1_properties_pipeline2_parameters_desttablenamefrompipeline": {
+						"value": "[parameters('trigger1_properties_pipeline2_parameters_desttablenamefrompipeline')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-veldandi_ArmTemplate_2')]"
+			]
+		}
+	]
+}

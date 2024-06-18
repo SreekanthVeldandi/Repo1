@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-veldandi"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"adlssreesa_linkedservice_accountKey": {
+			"value": ""
+		},
+		"linkedservice_adlsdemosa_connectionString": {
+			"value": ""
+		},
+		"onpremsqlserver_ls_password": {
+			"value": ""
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "@{linkedService().serverName}"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "@{linkedService().dbName}"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "@{linkedService().userName}"
+		},
+		"adlssreesa_linkedservice_properties_typeProperties_url": {
+			"value": "https://adlssreesa.dfs.core.windows.net/"
+		},
+		"onpremsqlserver_ls_properties_typeProperties_server": {
+			"value": "azuresqlserversree.database.windows.net"
+		},
+		"onpremsqlserver_ls_properties_typeProperties_database": {
+			"value": "Azuresqldb"
+		},
+		"onpremsqlserver_ls_properties_typeProperties_userName": {
+			"value": "azuresqlserveradmin"
+		},
+		"trigger1_properties_pipeline2_parameters_dbNamefrompipeline": {
+			"value": "test"
+		},
+		"trigger1_properties_pipeline2_parameters_sourcetableNamefrompipeliine": {
+			"value": "t1"
+		},
+		"trigger1_properties_pipeline2_parameters_desttablenamefrompipeline": {
+			"value": "t2"
+		}
+	}
+}
